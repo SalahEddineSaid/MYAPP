@@ -1,0 +1,45 @@
+<div class="container spacer">
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>Saisie une devis</h3></div>
+    <br>
+    <div class="panel-body">
+      <form #f="ngForm" (ngSubmit)="onSaveDevis(f.value)">
+        
+        <div class="form-group">
+          <label class="control-label">designation :</label>
+          <input class="form-control" type="text" name="designation"  ngModel/>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">quantite :</label>
+          <input class="form-control" type="text" name="quantite"  ngModel/>
+        </div>
+       
+        <div class="form-group">
+          <label class="control-label">prixUnitaireTtc :</label>
+          <input class="form-control" type="text" name="prixUnitaireTtc"  ngModel/>
+        </div>
+        <div class="form-group">
+          <label class="control-label">tag :</label>
+          <input class="form-control" type="text" name="tag"  ngModel/>
+        </div>
+
+
+        <div class="form-group">
+          <h4>Liste des client :</h4>
+          <mat-form-field>
+            <mat-select placeholder="client"  name="client" required ngModel>
+              <mat-option *ngFor="let t of clientList" [value]="t">
+                {{t.nom}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save</button>
+        <div class="divider"></div>
+        <button  type="submit" (click)="returnToList()" class="btn btn-primary">Retour</button>
+      </form>
+    </div>
+  </div>
+</div>
